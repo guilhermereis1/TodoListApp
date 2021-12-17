@@ -44,18 +44,20 @@ Faça o código exatamente como faria no dia-a-dia de trabalho. Não precisa inv
 
 run
 
-```chmod +x entrypoints/docker-entrypoint.sh
+```
+chmod +x entrypoints/docker-entrypoint.sh
 
 ```
 
 run
 
-```docker-compose up -d
+```
+docker-compose up -d
 
 ```
 
 run
 
-```docker-compose exec app bundle exec rake register:users
-
+```
+docker-compose exec app bundle exec rake register:users
 ```
