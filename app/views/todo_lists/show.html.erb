@@ -1,0 +1,40 @@
+<div class="alert_message">
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info" style="background-color: <%= @selected_color %> !important; color: #fff; border-color: <%= @selected_color %> !important">
+      <%= msg %>
+    </div>
+  <% end %>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <%= @todo_list.name %> (<b><%= @todo_list_items_count %></b>)
+  </div>
+  <div class="card-body">
+    <div class="progress progress_bar">
+      <div class="progress-bar" role="progressbar" style="width: <%= @percentage_complete %>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><%= @percentage_complete %>% concluído</div>
+    </div>
+
+    <div class="todo_itens">
+      <ul class="list-group">
+        <% @todo_list_items.each_with_index do |item, index| %>
+          <li class="list-group-item list-group-item-<%= item.completed ? "success" : "dark" %>">
+            <div class="item">
+              <div class="title"><b><%= index + 1 %></b> - <%= item.name %></div>
+              <div class="actions">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                  <%= status_item(item) %>
+                  <%= render 'edit_task', item: @todo_list_item, item: item %>
+                  <%= link_to I18n.t('views.todo_list.show.destroy'), item, method: :delete, class: 'btn btn-danger' %>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <%= render 'add_task', todo_list_item: @todo_list_item %> |
+    <%= link_to I18n.t('views.todo_list.show.edit'), edit_todo_list_path(@todo_list), class: 'btn btn-warning' %> | <%= link_to I18n.t('views.todo_list.show.back'), todo_lists_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

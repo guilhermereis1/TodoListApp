@@ -1,0 +1,43 @@
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAddTask">
+  <%= I18n.t('views.todo_list.show.create') %>
+</button>
+
+<div class="modal fade" id="modalAddTask" tabindex="-1" aria-labelledby="modalAddTaskLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAddTaskLabel"><%= I18n.t('views.todo_list.show.modal.title') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <%= form_with(model: todo_list_item) do |form| %>
+        <% if todo_list_item.errors.any? %>
+         <div id="error_explanation">
+           <h2><%= pluralize(todo_list_item.errors.count, "error") %> prohibited this todo_list_item from being saved:</h2>
+
+           <ul>
+             <% todo_list_item.errors.each do |error| %>
+               <li><%= error.full_message %></li>
+             <% end %>
+           </ul>
+         </div>
+       <% end %>
+       
+        <div class="field">
+          <%= form.label :name, class: 'form-label' %>
+          <%= form.text_field :name, class: 'form-control', placeholder: I18n.t('views.todo_list.show.modal.input.name.placeholder') %>
+        </div>
+
+        <%= form.hidden_field :todo_list_id, :value => @todo_list.id %>
+
+        <div class="submitButton">
+          <%= form.submit I18n.t('views.todo_list.show.create_item'), class: 'btn btn-success' %>
+        </div>
+       <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= I18n.t('views.todo_list.show.close_modal') %></button>
+      </div>
+    </div>
+  </div>
+</div>

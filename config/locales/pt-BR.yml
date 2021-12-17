@@ -1,0 +1,71 @@
+pt-BR:
+  views:
+    todo_list:
+      index:
+        title: "Lista de tarefas"
+        table:
+          head:
+            name: Título
+            tasks: Tarefas
+        btns:
+          new: Criar nova Lista de Tarefas
+          back: Voltar
+          view: Visualizar
+          edit: Editar
+          destroy: Excluir
+      show:
+        edit: Editar Item
+        back: Voltar
+        destroy: Excluir Item
+        create: Criar Tarefa
+        close_modal: Fechar
+        create_item: Criar Item de Tarefa
+        statues:
+          done: Concluído
+          pending: Pendente
+        notices:
+          created: Tarefa criada com sucesso
+          updated: Tarefa atualizada com sucesso
+          destroyed: Tarefa excluída com sucesso
+          edited: Item de tarefa editado com sucesso
+        status_task:
+          congrats: Parabéns! %{phrase}
+          shame: Poxa vida...! %{phrase}
+        modal:
+          title: "Criar Item de Tarefa"
+          title_edit: "Editar Item de Tarefa"
+          input:
+            name:
+              placeholder: Enter the Task name...
+      edit:
+        title: "Editar Lista de Tarefas"
+        btns:
+          edit: Atualizar
+          back: Voltar
+      new:
+        errors:
+          title: "O título da lista de tarefas é obrigatório"
+
+  activerecord:
+    common:
+      models: &models
+        todo_list: Lista de Tarefas
+        todo_list_item: Items
+
+      attributes: &attributes
+        <<: *models
+        id: ID
+        created_at: Criado Em
+        updated_at: Atualizado Em
+
+    models:
+      <<: *models
+
+    attributes:
+      todo_list:
+        <<: *attributes
+        name: Nome
+
+      todo_list_item:
+        <<: *attributes
+        name: Tarefa

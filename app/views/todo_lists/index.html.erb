@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= I18n.t('views.todo_list.index.title') %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= I18n.t('views.todo_list.index.table.head.name') %></th>
+      <th><%= I18n.t('views.todo_list.index.table.head.tasks') %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_lists.each do |todo_list| %>
+      <tr>
+        <td class="align-middle"><%= todo_list.name %></td>
+        <td class="align-middle"><%= todo_list.todo_list_items.count %></td>
+        <td class="align-middle">
+          <%= link_to I18n.t('views.todo_list.index.btns.view'), todo_list, class: 'btn btn-info' %> |
+          <%= link_to I18n.t('views.todo_list.index.btns.edit'), edit_todo_list_path(todo_list), class: 'btn btn-warning' %> |
+          <%= link_to I18n.t('views.todo_list.index.btns.destroy'), todo_list, method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to I18n.t('views.todo_list.index.btns.new'), new_todo_list_path, class: 'btn btn-primary' %>

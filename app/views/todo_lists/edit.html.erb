@@ -1,0 +1,5 @@
+<h1><%= I18n.t('views.todo_list.edit.title') %></h1>
+
+<%= render 'form', todo_list: @todo_list %>
+
+<%= link_to I18n.t('views.todo_list.edit.btns.edit'), @todo_list, class: 'btn btn-warning' %> | <%= link_to I18n.t('views.todo_list.edit.btns.back'), todo_lists_path, class: 'btn btn-secondary' %>
