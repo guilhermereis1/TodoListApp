@@ -26,11 +26,36 @@ Algumas exigências dos usuários muito empolgados com o sistema:
 
 Faça o código exatamente como faria no dia-a-dia de trabalho. Não precisa inventar algo para impressionar : ) Só faça com o que está confortável.
 
-
 ### TDD
+
 ### CLEAN CODE
+
 ### BEST PRACTICES
+
 ### RSPEC
+
 ### FACTORY BOT
+
 ### FAKER
+
 ### DEVISE
+
+## DOCKER
+
+run
+
+```chmod +x entrypoints/docker-entrypoint.sh
+
+```
+
+run
+
+```docker-compose up -d
+
+```
+
+run
+
+```docker-compose exec app bundle exec rake register:users
+
+```
